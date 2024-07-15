@@ -6,8 +6,11 @@ Myntra QuizUp is an innovative and engaging feature integrated into the Myntra p
 **The main objectives of Myntra QuizUp are:**
 
 **User Engagement:** To increase user engagement on the Myntra platform through interactive quizzes.
+
 **Data Collection:** To gather valuable insights into user preferences and behaviors based on their quiz responses.
+
 **Incentivization:** To reward users for their participation and continuous streaks, encouraging regular interaction with the platform.
+
 By participating in the Daily Dazzle and Weekly Dazzle quizzes, users not only enjoy a fun and interactive experience but also contribute to valuable data collection that helps Myntra tailor its recommendations and offerings to better suit customer preferences. This feature is a part of the Myntra HackerRamp WeForShe initiative, aimed at creating a more engaging and personalized shopping experience for all users.
 
 ## Functionality Overview
@@ -39,13 +42,44 @@ Figure 1: Flow diagram of the Myntra QuizUp feature.
 
 **Main Page**
 
-![Profile Section](screenshots/profile_section.png)
-![Daily Dazzle](screenshots/daily_dazzle.png)
-![Weekly Dazzle](screenshots/weekly_dazzle.png)
-![Quiz](screenshots/quiz.png)
-![Reward System](screenshots/reward_system.png)
+![Main page](https://github.com/user-attachments/assets/d609d5f1-ae2d-416f-9df5-f9a36a107051)
 
-## Purpose
 
-The purpose of this project is to engage users on the Myntra platform, gather responses related to Myntra fashion, and analyze user engagement through interactive challenges and quizzes.
+**Profile page**
+
+![Profile](https://github.com/user-attachments/assets/9d56279c-d0dd-4cd6-8734-f06e28cfb5f7)
+
+
+**Myntra QuizUp**
+
+![streak](https://github.com/user-attachments/assets/dfa11816-9d23-4d59-8c7f-5768271db862)
+
+
+**Daily Dazzle Login**
+
+![login](https://github.com/user-attachments/assets/9f59f758-8df5-45d0-86a0-23e6ca25a11b)
+
+
+**Quiz**
+
+![quiz](https://github.com/user-attachments/assets/92946655-4fcc-42e8-884b-33dda9e19d13)
+
+
+**Earn Coin**
+
+![coin](https://github.com/user-attachments/assets/4ec33e74-a971-4713-9fdc-66dcb19eeb95)
+
+
+**Redeem Page**
+
+![reedem](https://github.com/user-attachments/assets/f21ef3e0-99d6-42f6-93ed-c286dcdcc7f2)
+
+
+
+
+**Data Analysis Through PowerBI**
+
+![powerbi](https://github.com/user-attachments/assets/473eccc8-6bcd-4ccd-9c5e-cd4259629160)
+
+
 
