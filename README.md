@@ -32,11 +32,13 @@ By participating in the Daily Dazzle and Weekly Dazzle quizzes, users not only e
 ## Flow Diagram
 
 Figure 1: Flow diagram of the Myntra QuizUp feature.
+![flow](https://github.com/user-attachments/assets/860d031e-12e1-4e4d-be2c-f385b52b7aeb)
 
 
 ## Screenshots
 
-![Main Page](screenshots/main_page.png)
+**Main Page**
+
 ![Profile Section](screenshots/profile_section.png)
 ![Daily Dazzle](screenshots/daily_dazzle.png)
 ![Weekly Dazzle](screenshots/weekly_dazzle.png)
