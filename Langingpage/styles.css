@@ -1,0 +1,138 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.calendar {
+    width: 25%;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.calendar .day.green {
+    background-color: #8bc34a;
+}
+
+.streak-container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+}
+
+.streak-header {
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+    color: white;
+    padding: 20px;
+}
+
+.days {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.start-solving {
+    font-size: 14px;
+}
+
+.calendar-grid {
+    padding: 20px;
+}
+
+.month-year {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar-grid div {
+    width: 30px;
+    height: 30px;
+    background-color: #ddd;
+    border-radius: 5px;
+}
+
+.rewards {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-top: 1px solid #eee;
+}
+
+.geekbits, .bonus-geekbits {
+    font-size: 12px;
+}
+
+.time-machine {
+    background-color: #00274d;
+    color: white;
+    padding: 10px;
+}
+
+.time-machine button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.redeem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.geekbits-count {
+    font-size: 16px;
+}
+
+.redeem button {
+    background-color: #ff8a00;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.challenges {
+    width: 70%;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.challenge {
+    margin: 10px 0;
+    padding: 15px;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+}

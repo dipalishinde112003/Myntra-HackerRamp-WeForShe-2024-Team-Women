@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Challenge</title>
+    <style>
+        /* Add your styles here */
+    </style>
+</head>
+<body>
+    <div id="loginForm">
+        <h2>Weekly Challenge Login</h2>
+        <form>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br>
+            <label for="phone">Phone:</label><br>
+            <input type="text" id="phone" name="phone" required><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br>
+            <label for="city">City:</label><br>
+            <input type="text" id="city" name="city" required><br><br>
+            <button type="button" onclick="startQuiz()">Start Quiz</button>
+        </form>
+    </div>
+
+    <div id="quizForm" style="display: none;">
+        <h2>Weekly Quiz</h2>
+        <p>Question 1: What is your favorite Myntra category?</p>
+        <ul>
+            <li><input type="radio" name="quiz1" value="Men"> Men</li>
+            <li><input type="radio" name="quiz1" value="Women"> Women</li>
+            <li><input type="radio" name="quiz1" value="Kids"> Kids</li>
+            <li><input type="radio" name="quiz1" value="Home"> Home</li>
+        </ul>
+        <button onclick="submitQuiz('weekly')">Submit</button>
+    </div>
+
+    <script>
+        function startQuiz() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('quizForm').style.display = 'block';
+        }
+
+        function submitQuiz(type) {
+            const response = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                city: document.getElementById('city').value,
+                quizType: type,
+                answers: [
+                    document.querySelector('input[name=quiz1]:checked').value
+                ]
+            };
+
+            // Simulate submission to backend (replace with actual fetch call)
+            setTimeout(() => {
+                alert('Thank you! Winner will be declared soon for weekly challenge.');
+                // Optionally update streak calendar and points
+            }, 1000); // Simulate delay for demo purpose
+        }
+    </script>
+</body>
+</html>

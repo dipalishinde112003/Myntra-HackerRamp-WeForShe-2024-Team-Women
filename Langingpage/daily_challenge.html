@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Challenge</title>
+    <style>
+        /* Add your styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fce4ec;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #loginForm {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            
+            text-align: center;
+            width: 350px;
+
+        }
+        #loginForm h2 {
+            margin-bottom: 25px;
+            font-weight: normal;
+            color: #ff4081;
+        }
+        .social-login-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .social-login-buttons button {
+            width: 48%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .social-login-buttons .facebook {
+            background-color: #3b5998;
+            color: white;
+        }
+        .social-login-buttons .google {
+            background-color: #db4437;
+            color: white;
+        }
+
+       
+        #loginForm form {
+            display: flex;
+            flex-direction: column;
+        }
+        #loginForm form input {
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            
+        }
+        #loginForm form button {
+            padding: 10px;
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+
+        #loginForm form label {
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .popup button {
+            background-color: #ff0055;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .quiz-container, #quizForm {
+           
+            background: linear-gradient(135deg, #ff6f61, #de00a8); 
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .quiz-container h1, #quizForm h2 {
+            margin: 0 0 20px 0;
+            font-size: 24px;
+        }
+        .quiz-container h2, #quizForm p {
+            margin: 0 0 20px 0;
+            font-size: 18px;
+        }
+
+
+        .quiz-submit {
+            background-color: #ff0055;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .quiz-submit:hover {
+            background-color: #ff0055;
+        }
+
+
+
+
+
+
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            text-align: left;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color:#ff4081;
+        }
+        .popup {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+        .popup h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #ff6f61;
+        }
+        .popup h2 {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #de00a8;
+        }
+        .popup img {
+            width: 100px;
+            height: 100px;
+            margin: 20px 0;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="loginForm">
+        <h2>Daily Dazzle Login</h2>
+        <div class="social-login-buttons">
+            <button class="facebook">Facebook</button>
+            <button class="google">Google</button>
+        </div>
+        <form id="loginFormElement" action="#" method="post" onsubmit="return validateForm()"  name="google-sheet">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="Name" required><br>
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="Phone" required><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="Email" required><br>
+            <label for="city">City:</label>
+            <input type="text" id="city" name="City" required><br><br>
+            <button type="Submit">Start Quiz</button>
+            <!-- <input type="submit">Start Quiz</button> -->
+        </form>
+    </div>
+
+
+
+    <div id="quizForm" style="display: none;">
+        <h1>Daily Quiz</h1>
+        <h2>What is your favorite Myntra brand?<h2>
+        <ul>
+            <li><input type="radio" name="quiz1" value="Roadster"> Roadster</li>
+            <li><input type="radio" name="quiz1" value="Forever 21"> Forever 21</li>
+            <li><input type="radio" name="quiz1" value="H&M"> H&M</li>
+            <li><input type="radio" name="quiz1" value="Zara"> Zara</li>
+        </ul>
+        <button class="quiz-submit" onclick="submitQuiz('daily')">Submit</button>
+    </div>
+
+    <div class="popup" id="popup" style="display: none;">
+        <div id="animation-container" style="width: 100%; height: 100%;"></div>
+        <button onclick="goBackHome()">Congratulations!!<br> You Won 1 MynBits</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+
+    <script>
+
+        /*function validateForm() {
+            var form = document.getElementById('loginFormElement');
+            var isValid = true;
+
+            // Check if any input is empty
+            var inputs = form.querySelectorAll('input');
+            inputs.forEach(function(input) {
+                if (input.value.trim() === '') {
+                    input.style.borderColor = 'red';
+                    isValid = false;
+                } else {
+                    input.style.borderColor = '#ccc';
+                }
+            });
+
+            if (!isValid) {
+                alert('Please fill in all fields correctly.');
+                return false;
+            }
+
+            startQuiz();
+            return false;
+        }
+
+        function startQuiz() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('quizForm').style.display = 'block';
+        }
+
+        function submitQuiz(type) {
+            document.getElementById('quizForm').style.display = 'none';
+            document.getElementById('popup').style.display = 'block';
+
+            const response = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                city: document.getElementById('city').value,
+                quizType: type,
+                answers: [
+                    document.querySelector('input[name=quiz1]:checked').value
+                ]
+            };
+            saveToGoogleSheets();
+            document.getElementById('popup').style.display = 'block';
+            const today = new Date().getDate();
+            const calendarDays = document.querySelectorAll('.calendar-grid div');
+            calendarDays[today - 1].style.backgroundColor = 'pink';
+            function saveToGoogleSheets() {
+                console.log('Saving quiz response to Google Sheets...');
+            }
+            function goBackHome() {
+                document.getElementById('popup').style.display = 'none';
+                document.getElementById('quiz-container').style.display = 'none';
+                document.querySelector('.container').style.display = 'flex';
+            }
+            function loadLottieAnimation() {
+                var animationContainer = document.getElementById('animation-container');
+                lottie.loadAnimation({
+                    container: animationContainer,
+                    renderer: 'svg',
+                    loop: false,
+                    autoplay: true,
+                    path: 'https://assets4.lottiefiles.com/packages/lf20_jcxaufdy.json' // Replace with the URL of your Lottie animation
+                });
+            }
+            window.validateForm = validateForm;
+            window.submitQuiz = submitQuiz;
+        
+        }*/
+        
+
+        function validateForm() {
+            var form = document.getElementById('loginFormElement');
+            var isValid = true;
+
+            // Check if any input is empty
+            var inputs = form.querySelectorAll('input');
+            inputs.forEach(function(input) {
+                if (input.value.trim() === '') {
+                    input.style.borderColor = 'red';
+                    isValid = false;
+                } else {
+                    input.style.borderColor = '#ccc';
+                }
+            });
+
+            if (!isValid) {
+                alert('Please fill in all fields correctly.');
+                return false;
+            }
+
+            startQuiz();
+            return false;
+        }
+
+        function startQuiz() {
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyAGvsqkz4b-8ZswqMcVPxev6B0_Qd-WEmp7YfxUQjWhSPcqTiuVBsut73gKX8b-w7r/exec';
+            const form = document.forms['google-sheet'];
+
+    // Submit form data to Google Sheets
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                console.log('Data sent to Google Apps Script:', response);
+            // Redirect to the quiz page
+             })
+            .catch(error => console.error('Error sending data to Google Apps Script:', error));
+
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('quizForm').style.display = 'block';
+
+        }
+        
+        
+        function submitQuiz(type) {
+            document.getElementById('quizForm').style.display = 'none';
+            document.getElementById('popup').style.display = 'block';
+
+            const response = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                city: document.getElementById('city').value,
+                quizType: type,
+                answers: [
+                    document.querySelector('input[name=quiz1]:checked').value
+                ]
+            };
+            /*fetch('https://script.google.com/macros/s/AKfycbxh1shJjUZZFAgV7-8-4ZkFl-_z4QgMSN4-pFZ7-8FiJRKnb2bUzxEIFyTmRuNTefOYGQ/exec', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(response)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Data sent to Google Apps Script:', data);
+                // Handle success (optional)
+                loadLottieAnimation();
+            })
+            .catch(error => {
+                console.error('Error sending data to Google Apps Script:', error);
+                // Handle errors (optional)
+            });*/
+
+            /*const scriptURL='https://script.google.com/macros/s/AKfycbwfF0X41mrAejvgrDAQ1fpni7UskgW9gIrm15GNNwp4cHAHc65Nw473YEFoaSc01lGtXg/exec'
+
+            const form=document.forms['google-sheet']
+
+            form.addEventListener('submit',e=> {
+                e.preventDefault()
+                fetch(scriptURL, { method :'POST',body: new FormData(form)})
+                .then(response=> alert("Thanks for Submitting") )
+                .catch(error => console.error('Error!',error.message))
+
+            })*/
+            loadLottieAnimation();
+
+        }
+        
+
+        function goBackHome() {
+            document.getElementById('popup').style.display = 'none';
+            // Optionally hide other elements or show something else
+        }
+
+        function loadLottieAnimation() {
+            var animationContainer = document.getElementById('animation-container');
+            lottie.loadAnimation({
+                container: animationContainer,
+                renderer: 'svg',
+                loop: false,
+                autoplay: true,
+                path: 'Animation - 1720956428444.json' // Replace with the URL of your Lottie animation
+            });
+        }
+
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myntra Challenge</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 20px;
+        }
+        .streak-container {
+            width: 30%;
+            padding: 20px;
+            text-align: center;
+        }
+        .streak-header {
+            background: linear-gradient(90deg, #ff8a00, #e52e71);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .calendar {
+            margin-bottom: 20px;
+        }
+        .calendar select {
+            margin-bottom: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+        .calendar-grid div {
+            width: 30px;
+            height: 30px;
+            background-color: #ddd;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .calendar-grid .highlight {
+            background-color: #ff8a00;
+            color: white;
+        }
+        .rewards {
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+        }
+        .Mynbits, .bonus-geekbits {
+            font-size: 14px;
+        }
+        .time-machine {
+            background-color: #00274d;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .time-machine button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .redeem {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .Mynbits-count {
+            font-size: 16px;
+        }
+        .redeem button {
+            background-color: #ff8a00;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .challenges {
+            width: 65%;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .flex-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .challenge-container {
+            background: linear-gradient(90deg, #ff8a00, #e52e71);
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: white;
+        }
+        .top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .problem-header {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .problem-date {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .timer {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .solve-button {
+            background-color: #ff0055;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .solve-button:hover {
+            background-color: #ff2a6d;
+        }
+        .details {
+            font-size: 14px;
+            color: grey;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="streak-container">
+            <div class="streak-header">
+                Style Streak
+            </div>
+            <div class="calendar">
+                <select id="month" onchange="updateCalendar()">
+                    <!-- Months options will be dynamically populated by JavaScript -->
+                </select>
+                <select id="year" onchange="updateCalendar()">
+                    <!-- Years options will be dynamically populated by JavaScript -->
+                </select>
+                <div class="calendar-grid">
+                    <!-- Days will be generated by JavaScript -->
+                </div>
+            </div>
+            <div class="rewards">
+                <div class="Mynbits">MynBits</div>
+                <div class="bonus-geekbits">+8 Bonus MynBits</div>
+            </div>
+            <div class="time-machine">
+                <button>Time Machine</button>
+            </div>
+            <div class="redeem">
+                <div class="Mynbits-count">1 bits</div>
+                <button class="solve-button" onclick="redeemMynBits()">Redeem</button>
+            </div>
+        </div>
+        <div class="challenges">
+            <div class="flex-container">
+                <div class="challenge-container">
+                    <div class="top-row">
+                        <div class="problem-date" id="daily-problem-date">--</div>
+                        <div class="problem-header">Daily Dazzle</div>
+                        <div class="timer" id="daily-timer">--</div>
+                    </div>
+                    <button class="solve-button" onclick="startDailyChallenge()">Start</button>
+                </div>
+                <div class="challenge-container">
+                    <div class="top-row">
+                        <div class="problem-date" id="weekly-problem-date">--</div>
+                        <div class="problem-header">Weekly Dazzle</div>
+                        <div class="timer" id="weekly-timer">--</div>
+                    </div>
+                    <button class="solve-button" onclick="startWeeklyChallenge()">Start</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function startDailyChallenge() {
+            window.location.href = 'daily_challenge.html';
+        }
+
+        function startWeeklyChallenge() {
+            window.location.href = 'weekly_challenge.html';
+        }
+
+        function updateMynBitsCount(count) {
+            const mynBitsCountElement = document.getElementById('mynBitsCount');
+            mynBitsCountElement.textContent = `${count} bits`;
+        }
+        function redeemMynBits() {
+            window.location.href = 'reedem.html';
+        }
+
+    
+
+        document.addEventListener("DOMContentLoaded", function() {
+            populateMonthAndYear();
+            updateDates();
+            updateCalendar();
+            updateTimers();
+            setInterval(updateTimers, 1000);
+        });
+
+        function populateMonthAndYear() {
+            const monthSelect = document.getElementById('month');
+            const yearSelect = document.getElementById('year');
+
+            const currentMonth = new Date().getMonth();
+            const currentYear = new Date().getFullYear();
+
+            const months = [
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+
+            months.forEach((month, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = month;
+                if (index === currentMonth) {
+                    option.selected = true;
+                }
+                monthSelect.appendChild(option);
+            });
+
+            for (let year = currentYear - 5; year <= currentYear + 5; year++) {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                if (year === currentYear) {
+                    option.selected = true;
+                }
+                yearSelect.appendChild(option);
+            }
+        }
+
+        function updateCalendar() {
+            const month = document.getElementById('month').value;
+            const year = document.getElementById('year').value;
+            const calendarGrid = document.querySelector('.calendar-grid');
+            calendarGrid.innerHTML = '';
+
+            const today = new Date();
+            const currentMonth = today.getMonth();
+            const currentYear = today.getFullYear();
+            const currentDate = today.getDate();
+
+            const daysInMonth = new Date(year, parseInt(month) + 1, 0).getDate();
+
+            for (let i = 1; i <= daysInMonth; i++) {
+                const dayDiv = document.createElement('div');
+                dayDiv.textContent = i;
+                if (parseInt(month) === currentMonth && parseInt(year) === currentYear && i === currentDate) {
+                    dayDiv.classList.add('highlight');
+                }
+                calendarGrid.appendChild(dayDiv);
+            }
+        }
+
+        function updateDates() {
+            const today = new Date();
+
+            // Set daily problem date
+            const dailyDateElement = document.getElementById('daily-problem-date');
+            dailyDateElement.textContent = today.toDateString();
+
+            // Set weekly problem date
+            const weeklyDateElement = document.getElementById('weekly-problem-date');
+            const nextSunday = getNextSunday();
+            weeklyDateElement.textContent = nextSunday.toDateString();
+
+            // Calculate days remaining for weekly challenge
+            const daysRemainingElement = document.getElementById('weekly-timer');
+            const daysRemaining = getDaysRemaining(nextSunday);
+            daysRemainingElement.textContent = `${daysRemaining} days remaining`;
+        }
+
+        function updateTimers() {
+            // Update daily challenge timer
+            const now = new Date();
+            const tomorrow = new Date(now);
+            tomorrow.setDate(now.getDate() + 1);
+            tomorrow.setHours(0, 0, 0, 0);
+
+            const timeRemainingDaily = getTimeRemaining(now, tomorrow);
+            const dailyTimerElement = document.getElementById('daily-timer');
+            dailyTimerElement.textContent = formatTime(timeRemainingDaily);
+        }
+
+        function getNextSunday() {
+            const today = new Date();
+            const nextSunday = new Date(today);
+            nextSunday.setDate(today.getDate() + (7 - today.getDay()));
+            return nextSunday;
+        }
+
+        function getDaysRemaining(date) {
+            const today = new Date();
+            const oneDay = 24 * 60 * 60 * 1000;
+            const daysRemaining = Math.round((date - today) / oneDay);
+            return daysRemaining;
+        }
+
+        function getTimeRemaining(start, end) {
+            const timeRemaining = (end - start) / 1000;
+            return timeRemaining;
+        }
+
+        function formatTime(seconds) {
+            const hours = Math.floor(seconds / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            const remainingSeconds = Math.floor(seconds % 60);
+            return `${String(hours).padStart(2, '0')} : ${String(minutes).padStart(2, '0')} : ${String(remainingSeconds).padStart(2, '0')}`;
+        }
+    </script>
+</body>
+</html>
