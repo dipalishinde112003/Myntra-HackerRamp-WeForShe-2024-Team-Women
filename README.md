@@ -1,7 +1,14 @@
 # Myntra-HackerRamp-WeForShe-2024-Team-Women
-# Myntra Hackerramp WeForShe Project
 
-This project is part of Myntra's Hackerramp WeForShe initiative aimed at engaging users with Myntra fashion through interactive quizzes and challenges.
+# Introduction
+Myntra QuizUp is an innovative and engaging feature integrated into the Myntra platform. This feature aims to enhance user interaction by introducing daily and weekly fashion-related quizzes. Users can participate in these quizzes, earn coins, and redeem them for exciting goodies.
+
+**The main objectives of Myntra QuizUp are:**
+
+**User Engagement:** To increase user engagement on the Myntra platform through interactive quizzes.
+**Data Collection:** To gather valuable insights into user preferences and behaviors based on their quiz responses.
+**Incentivization:** To reward users for their participation and continuous streaks, encouraging regular interaction with the platform.
+By participating in the Daily Dazzle and Weekly Dazzle quizzes, users not only enjoy a fun and interactive experience but also contribute to valuable data collection that helps Myntra tailor its recommendations and offerings to better suit customer preferences. This feature is a part of the Myntra HackerRamp WeForShe initiative, aimed at creating a more engaging and personalized shopping experience for all users.
 
 ## Functionality Overview
 
@@ -11,16 +18,21 @@ This project is part of Myntra's Hackerramp WeForShe initiative aimed at engagin
   - **Daily Dazzle:**
     - View upcoming daily challenges and their countdown timers.
     - Click to start the challenge, prompting user login.
-    - Submit responses to Google Sheets for analysis.
+    - Submit responses to for analysis.
   - **Weekly Dazzle:**
     - View upcoming weekly challenges and their countdown timers.
     - Click to view details.
   - **Quiz:**
     - Start and submit quizzes, storing responses in Sheets.
-    - Use PowerBI for response analysis.
+    - Use **PowerBI** for response analysis.
   - **Reward System:**
     - Accumulate coins based on quiz performance.
     - Redeem rewards based on coin count.
+
+## Flow Diagram
+
+Figure 1: Flow diagram of the Myntra QuizUp feature.
+
 
 ## Screenshots
 
